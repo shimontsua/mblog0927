@@ -1,15 +1,3 @@
-{% extends "base2.html" %}
-{% block title %}{{post.title}}文學天地{% endblock title %}
-{% block headmessage %}
-<h3 style="font-family:標楷體;">{{post.title}}</h3>
-<a style="font-family:標楷體;" href="/">回首頁</a>
-{% endblock headmessage %}
-{% block content %}
-<p style="font-family:微軟正黑體;font-size:14pt;font-weight:bold;">
-    {{post.body}}</a>
-</p>
-{% endblock content %}
-
 <!DOCTYPE <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -19,7 +7,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>
+            {% block title %}{% endblock %}
+        </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
@@ -28,16 +18,11 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1>{{post.title}}</h1>
+        {% include 'header.html' %}
+        {% block headmessage %}{% endblock headmessage %}
         <hr>
-        <p style="font-family:微軟正黑體;font-size:14pt;font-weight:bold;">
-            {{ post.body }}
-        </p>
-        <hr>
-        {{post.pub_date}}
-        <h3>
-            <a href="/">回首頁</a>
-        </h3>
+        {% block content %}{% endblock content %}
+        {% include "footer.html" %}
         <script src="" async defer></script>
     </body>
 </html>
