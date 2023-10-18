@@ -16,10 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mysite import views as mv
-
+from mysite import views as mv #從mysite 載入
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',mv.homepage,name="homepage"),
-    path('post/<slug:slug>/', mv.showpost, name="showpost")
 ]
